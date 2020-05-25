@@ -20,7 +20,7 @@ function App() {
     return (
         <div className="App">
             <img src={logo} width="160" alt="..." />
-            <h1 align="center" style={{ marginTop: "15px", fontSize: 25 }}>
+            {/* <h1 align="center" style={{ marginTop: "15px", fontSize: 25 }}>
                 DLModelCI: A Scalable and Elastic Model Management Platformfor
                 DNN Inference Serving in Clouds
             </h1>
@@ -48,7 +48,7 @@ function App() {
                 </a>{" "}
                 •&nbsp;
                 <a href="https://github.com/cap-ntu/ML-Model-CI">News</a>
-            </p>
+            </p> */}
             <Divider orientation="left">Profiling Result of ResNet50</Divider>
             <div style={{ display: "inline-block" }}>
                 <Alert
