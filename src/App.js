@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { Divider, Alert, Button } from "antd";
+import { Divider, Alert } from "antd";
 import "antd/dist/antd.css";
 import * as DataClass from "./data";
 import {
@@ -50,9 +50,13 @@ function App() {
                 <a href="https://github.com/cap-ntu/ML-Model-CI">News</a>
             </p>
             <Divider orientation="left">Profiling Result of ResNet50</Divider>
-            <div style={{ display: "inline-block" }}>
+            <div style={{ display: "flex" }}>
                 <Alert
-                    style={{ width: "800px", textAlign: "left" }}
+                    style={{
+                        width: "800px",
+                        textAlign: "left",
+                        marginLeft: "100px",
+                    }}
                     description="Your Model (ResNet-50) has been profiled successfully."
                     type="success"
                     showIcon
@@ -61,43 +65,37 @@ function App() {
             <br />
             <div className="showDataClass">
                 <ComposedChart
-                    width={500}
-                    height={500}
+                    width={600}
+                    height={550}
                     data={DataClass.smsd_dbs_T4}
                     margin={{
                         top: 5,
-                        right: 10,
-                        left: 10,
-                        bottom: 5,
+                        right: 20,
+                        left: 15,
+                        bottom: 50,
                     }}
                 >
                     <Legend verticalAlign="top" height={36} />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                    <XAxis
-                        dataKey="bs"
-                        label={{
-                            value: "Batch Size",
-                            position: "insideBottom",
-                            offset: -4,
-                        }}
-                    />
+                    <XAxis dataKey="bs">
+                        <Label
+                            offset="-23"
+                            value="Batch Size"
+                            position="insideBottom"
+                            style={{ textAnchor: "middle", fontSize: 20 }}
+                        />
+                    </XAxis>
                     <YAxis
                         yAxisId="latency"
                         orientation="right"
                         type="number"
                         domain={[0, 550]}
-                        label={{
-                            value: "",
-                            angle: -90,
-                            position: "center",
-                            offset: 50,
-                        }}
                     >
                         <Label
                             value="95th Percentile Latency (ms)"
                             position="insideRight"
                             angle={-90}
-                            style={{ textAnchor: "middle" }}
+                            style={{ textAnchor: "middle", fontSize: 20 }}
                         />
                     </YAxis>
                     <YAxis
@@ -110,7 +108,7 @@ function App() {
                             value="Throughput on Tesla T4 (req/sec)"
                             position="insideLeft"
                             angle={-90}
-                            style={{ textAnchor: "middle" }}
+                            style={{ textAnchor: "middle", fontSize: 20 }}
                         />
                     </YAxis>
                     <Tooltip />
@@ -129,14 +127,14 @@ function App() {
                     />
                 </ComposedChart>
                 <ComposedChart
-                    width={500}
-                    height={500}
+                    width={550}
+                    height={550}
                     data={DataClass.smsd_dbs_util}
                     margin={{
                         top: 5,
-                        right: 10,
-                        left: 10,
-                        bottom: 5,
+                        right: 15,
+                        left: 15,
+                        bottom: 50,
                     }}
                 >
                     <Legend verticalAlign="top" height={36} />
@@ -165,20 +163,20 @@ function App() {
                         strokeWidth={1.5}
                     />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                    <XAxis
-                        dataKey="bs"
-                        label={{
-                            value: "Batch Size",
-                            position: "insideBottom",
-                            offset: -4,
-                        }}
-                    />
+                    <XAxis dataKey="bs">
+                        <Label
+                            offset="-23"
+                            value="Batch Size"
+                            position="insideBottom"
+                            style={{ textAnchor: "middle", fontSize: 20 }}
+                        />
+                    </XAxis>
                     <YAxis type="number" domain={[0, 100]}>
                         <Label
                             value="Average GPU Utilization (%)"
                             position="insideLeft"
                             angle={-90}
-                            style={{ textAnchor: "middle" }}
+                            style={{ textAnchor: "middle", fontSize: 20 }}
                         />
                     </YAxis>
                     <Tooltip />
@@ -186,32 +184,32 @@ function App() {
             </div>
             <div className="showDataClass">
                 <ComposedChart
-                    width={500}
-                    height={500}
+                    width={550}
+                    height={550}
                     data={DataClass.dp_throughput_bs2}
                     margin={{
                         top: 5,
-                        right: 10,
-                        left: 10,
-                        bottom: 5,
+                        right: 15,
+                        left: 15,
+                        bottom: 50,
                     }}
                 >
                     <Legend verticalAlign="top" height={36} />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                    <XAxis
-                        dataKey="platform"
-                        label={{
-                            value: "Serving Platform",
-                            position: "insideBottom",
-                            offset: -2,
-                        }}
-                    />
+                    <XAxis dataKey="platform">
+                        <Label
+                            offset="-23"
+                            value="Serving Platform"
+                            position="insideBottom"
+                            style={{ textAnchor: "middle", fontSize: 20 }}
+                        />
+                    </XAxis>
                     <YAxis orientation="left" type="number" domain={[0, 220]}>
                         <Label
                             value="Throughput (req/sec)"
                             position="insideLeft"
                             angle={-90}
-                            style={{ textAnchor: "middle" }}
+                            style={{ textAnchor: "middle", fontSize: 20 }}
                         />
                     </YAxis>
                     <Tooltip />
@@ -219,14 +217,14 @@ function App() {
                     <Bar dataKey="P4" barSize={25} fill="#3CB371" />
                 </ComposedChart>
                 <ComposedChart
-                    width={500}
-                    height={500}
+                    width={550}
+                    height={550}
                     data={DataClass.dp_util_T4}
                     margin={{
                         top: 5,
-                        right: 10,
-                        left: 10,
-                        bottom: 5,
+                        right: 15,
+                        left: 15,
+                        bottom: 50,
                     }}
                 >
                     <Legend verticalAlign="top" height={36} />
@@ -255,20 +253,20 @@ function App() {
                         strokeWidth={1.5}
                     />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                    <XAxis
-                        dataKey="bs"
-                        label={{
-                            value: "Batch Size",
-                            position: "insideBottom",
-                            offset: -4,
-                        }}
-                    />
+                    <XAxis dataKey="bs">
+                        <Label
+                            offset="-23"
+                            value="Batch Size"
+                            position="insideBottom"
+                            style={{ textAnchor: "middle", fontSize: 20 }}
+                        />
+                    </XAxis>
                     <YAxis type="number" domain={[0, 100]}>
                         <Label
                             value="Average GPU Utilization (%)"
                             position="insideLeft"
                             angle={-90}
-                            style={{ textAnchor: "middle" }}
+                            style={{ textAnchor: "middle", fontSize: 20 }}
                         />
                     </YAxis>
                     <Tooltip />
