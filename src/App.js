@@ -127,6 +127,67 @@ function App() {
                     />
                 </ComposedChart>
                 <ComposedChart
+                    width={600}
+                    height={550}
+                    data={DataClass.same_device_diff_gpu}
+                    margin={{
+                        top: 5,
+                        right: 20,
+                        left: 15,
+                        bottom: 50,
+                    }}
+                >
+                    <Legend verticalAlign="top" height={36} />
+                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                    <XAxis dataKey="gpu">
+                        <Label
+                            offset="-23"
+                            value="Serving Device"
+                            position="insideBottom"
+                            style={{ textAnchor: "middle", fontSize: 20 }}
+                        />
+                    </XAxis>
+                    <YAxis
+                        yAxisId="latency"
+                        orientation="right"
+                        type="number"
+                        domain={[0, 100]}
+                    >
+                        <Label
+                            value="95th Percentile Latency (ms)"
+                            position="insideRight"
+                            angle={-90}
+                            style={{ textAnchor: "middle", fontSize: 20 }}
+                        />
+                    </YAxis>
+                    <YAxis
+                        yAxisId="throughput"
+                        orientation="left"
+                        type="number"
+                        domain={[0, 600]}
+                    >
+                        <Label
+                            value="Throughput for Batch Size 16 (req/sec)"
+                            position="insideLeft"
+                            angle={-90}
+                            style={{ textAnchor: "middle", fontSize: 20 }}
+                        />
+                    </YAxis>
+                    <Tooltip />
+                    <Bar
+                        dataKey="throughput"
+                        barSize={30}
+                        fill="#20B2AA"
+                        yAxisId="throughput"
+                    />
+                    <Bar
+                        dataKey="latency"
+                        barSize={30}
+                        fill="#EEAD0E"
+                        yAxisId="latency"
+                    />
+                </ComposedChart>
+                {/* <ComposedChart
                     width={550}
                     height={550}
                     data={DataClass.smsd_dbs_util}
@@ -180,42 +241,9 @@ function App() {
                         />
                     </YAxis>
                     <Tooltip />
-                </ComposedChart>
+                </ComposedChart> */}
             </div>
             <div className="showDataClass">
-                <ComposedChart
-                    width={550}
-                    height={550}
-                    data={DataClass.dp_throughput_bs2}
-                    margin={{
-                        top: 5,
-                        right: 15,
-                        left: 15,
-                        bottom: 50,
-                    }}
-                >
-                    <Legend verticalAlign="top" height={36} />
-                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                    <XAxis dataKey="platform">
-                        <Label
-                            offset="-23"
-                            value="Serving Platform"
-                            position="insideBottom"
-                            style={{ textAnchor: "middle", fontSize: 20 }}
-                        />
-                    </XAxis>
-                    <YAxis orientation="left" type="number" domain={[0, 220]}>
-                        <Label
-                            value="Throughput (req/sec)"
-                            position="insideLeft"
-                            angle={-90}
-                            style={{ textAnchor: "middle", fontSize: 20 }}
-                        />
-                    </YAxis>
-                    <Tooltip />
-                    <Bar dataKey="T4" barSize={25} fill="#4169E1" />
-                    <Bar dataKey="P4" barSize={25} fill="#3CB371" />
-                </ComposedChart>
                 <ComposedChart
                     width={550}
                     height={550}
@@ -270,6 +298,39 @@ function App() {
                         />
                     </YAxis>
                     <Tooltip />
+                </ComposedChart>
+                <ComposedChart
+                    width={550}
+                    height={550}
+                    data={DataClass.dp_throughput_bs2}
+                    margin={{
+                        top: 5,
+                        right: 15,
+                        left: 15,
+                        bottom: 50,
+                    }}
+                >
+                    <Legend verticalAlign="top" height={36} />
+                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                    <XAxis dataKey="platform">
+                        <Label
+                            offset="-23"
+                            value="Serving Platform"
+                            position="insideBottom"
+                            style={{ textAnchor: "middle", fontSize: 20 }}
+                        />
+                    </XAxis>
+                    <YAxis orientation="left" type="number" domain={[0, 220]}>
+                        <Label
+                            value="Throughput (req/sec)"
+                            position="insideLeft"
+                            angle={-90}
+                            style={{ textAnchor: "middle", fontSize: 20 }}
+                        />
+                    </YAxis>
+                    <Tooltip />
+                    <Bar dataKey="T4" barSize={25} fill="#4169E1" />
+                    <Bar dataKey="P4" barSize={25} fill="#3CB371" />
                 </ComposedChart>
             </div>
         </div>
